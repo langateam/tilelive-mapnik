@@ -1,20 +1,24 @@
 language: node_js
-
 node_js:
- - "0.10"
- - "4"
+- '6'
+- '7'
 
 addons:
   apt:
     sources:
-     - ubuntu-toolchain-r-test
+    - ubuntu-toolchain-r-test
     packages:
-     - libstdc++6 # upgrade libstdc++ on linux to support C++11
-
-sudo: false
+    - libstdc++6
 
 install:
- - npm install --fallback-to-build=false
+- npm install --fallback-to-build=false
 
-script:
- - npm test
+deploy:
+  provider: npm
+  email: hello@langa.io
+  api_key:
+    secure: KAYIYyR/Mb719PtFfSQQ2W8P6c/GmZTaf9DmufX1zSEvt9YxoVYXSV7mSKZQgRs24whWsgTGC4M2GKoK7lxcTpFzWYlFCxZC20UdSvwlHk/nPHahaai+XLA0OOYkog2DenmFlBdxBxe3RYJp1N9g6dSH5Wapmpp7gpSUZQZmfjF9VZ7bwoqIZ+17KfOGvRtQ6HNxVg1hc/dCk3v6i/bAIKkwVW5G4plub4aJfSj/8wMOnTYcwQzm11KbaooFP5BmP39ZIEZgTutcy+JSmuI+Mhf4P5A+RWaQ+JTIL8YLiSrhzcgQ4KHTI1ersg7UxrSqFtJQkn14PDkTXoFvmjQ9iB9LPS6VpeMKlY4G1MjqDWhVNhcs95kFQJklvHQUr+RnyS5cfrg5ak+1UtYpsr/maluZSj9EMEFJ6qfEPeDJYx5CE5mpd2t7/lYYS6yDVCUj5WV3BhMmfg5Czd3V/3TUt1k5VrbBEO5hBz9De5Bx6/XZK3Fyx5nHonOZ5D2OpOP4Ql05la7EFQeBXSBcInitslTdV2GMe7TEbudusTbXbJLGnNbdg+BB9p1F/j9RZZ78NJgVybNg4Sc0HhjUP+zFPY8yPZfaIrAfbk3oZGc4FPxeAc2OqhKFeqc20B0ythyDM65g9Pb039cpr/dzW0RYEqUNBGaEIPNQZb9kvrTSrpo=
+  on:
+    tags: true
+    repo: langateam/tilelive-mapnik
+    node: 6
